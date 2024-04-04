@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { NetsapiensApiManager } from '@challenge-ns-sms-demo/common-models';
 
+function uuidv4() {
+  return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+    (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
+  );
+}
+
 export class SmsSender {
 
   constructor(private nsApiManager: NetsapiensApiManager) {
@@ -14,8 +20,10 @@ export class SmsSender {
       const accessToken = await this.nsApiManager.getAccessToken();
       const fromNum = this.nsApiManager.getSmsDid();
 
-      // Required Session ID.  This can be used on the backend to track conversations
-      const sessionId = Math.random().toString(36).substring(7);
+      // Required Session ID.  We can't set these for our outbound-initiated conversations
+      //  but we hold onto the ones that netsapiens generates on new inbound conversations.
+      const sessionId = uuidv4();
+      console.log("SESSION ID: ", sessionId);
 
       // Optional Upload DID
       const uploadId = Math.random().toString(36).substring(7);
