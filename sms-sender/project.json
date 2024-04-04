@@ -1,0 +1,9 @@
+{
+  "name": "sms-sender",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "sms-sender/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project sms-sender --web",
+  "targets": {}
+}

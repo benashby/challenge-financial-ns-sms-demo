@@ -13,7 +13,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "@challenge-ns-sms-demo/common-models": ["common-models/src/index.ts"],
+      "@challenge-ns-sms-demo/sms-listener": ["sms-listener/src/index.ts"],
+      "@challenge-ns-sms-demo/sms-sender": ["sms-sender/src/index.ts"]
+    },
     "esModuleInterop": true
   },
   "files": [],
